@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tra cứu giá hoa quả</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+    .box {
+      border: 1px solid #999;
+      padding: 20px 30px;
+      width: 320px;
+    }
+    h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+    .row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    input {
+      flex: 1;
+      padding: 6px 8px;
+      font-size: 14px;
+    }
+    button {
+      padding: 6px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    #ket_qua {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Giá hoa quả</h2>
+    <div class="row">
+      <input type="text" id="ten_hoa_qua" placeholder="Nhập tên hoa quả..." />
+      <button type="button" onclick="xemGia()">Xem giá</button>
+    </div>
+    <div id="ket_qua"></div>
+  </div>
+
+  <script>
+    function xemGia() {
+      const tenNhap = document.getElementById("ten_hoa_qua").value.trim();
+      const ketQuaEl = document.getElementById("ket_qua");
+      let gia = "";
+
+      // Chuẩn hóa chữ thường để người dùng nhập "ổi", "Ổi", "dưa hấu", "Dưa Hấu"... đều khớp
+      switch (tenNhap.toLowerCase()) {
+        case "ổi":
+        case "dưa hấu":
+          gia = "20000 VNĐ/kg";
+          break;
+        case "táo":
+          gia = "30000 VNĐ/kg";
+          break;
+        case "cam":
+        case "chôm chôm":
+          gia = "40000 VNĐ/kg";
+          break;
+        case "măng cụt":
+          gia = "50000 VNĐ/kg";
+          break;
+        default:
+          gia = "Tìm không thấy";
+          break;
+      }
+
+      ketQuaEl.textContent = gia;
+    }
+  </script>
+</body>
+</html>
